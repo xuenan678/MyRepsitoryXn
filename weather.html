@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气查询</title>
+    <style>
+        *{
+            padding:0;margin:0;
+        }
+.warp{
+    width: 800px;
+    margin:0 auto;
+}
+.warp #inner{
+    height: 30px;
+    width: 80%;
+}
+.warp #btn{
+    height: 30px;
+    width: 20%;
+    height: 30px;
+    background: blue;
+    color: white;
+}
+.content{
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.content ul{
+    width: 100%
+}
+li{
+    list-style: none;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+
+
+}
+.content ul li p{
+    display: inline-block;
+        text-indent: 10px;
+        color: red;
+        word-wrap:break-word
+}
+    </style>
+</head>
+<body>
+        <div class="warp">
+            <input type="text" id="inner" placeholder="全国天气查询请出入城市名">
+            <button id="btn">查询</button>
+            <div class="content">
+                <ul id = 'box'>
+                    <li>temperature:<p></p></li>
+                    <li>wind:<p></p></li>
+                    <li>week:<p></p></li>
+                    <li>city:<p></p></li>
+                    <li>date_y:<p></p></li>
+                    <li>dressing_advice:<p></p></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    <script>
+       // http://v.juhe.cn/weather/index?cityname=%E5%8C%97%E4%BA%AC&dtype=jsonp&callback=sueecss&format=1&key=014c67576c90d0d4f2004adac6b59b73
+       var textP = document.getElementById("inner");
+       var btn = document.getElementById("btn");
+       var ulb = document.getElementById('box').getElementsByTagName("p");
+       var d = new Date().getTime();
+       var script
+       btn.onclick = function (){
+        if(!script){
+            script  = document.createElement("script");
+        }
+
+               script.src="http://v.juhe.cn/weather/index?cityname="+textP.value+"&dtype=jsonp&callback=sueecss&format=1&key=014c67576c90d0d4f2004adac6b59b73&d="+d+"";
+               document.body.appendChild(script);
+               script.onload=function(){
+                        document.body.removeChild(script);
+                        script= null;
+               }
+       }
+       function sueecss(data){
+            //console.log(data);
+           // var data = data
+           var reuslt = data.result.today;
+           console.log(reuslt);
+           for(var key in reuslt){
+             switch(key)
+                {
+                case "city":
+                  //neirong
+                  ulb[3].innerHTML = reuslt[key];
+                  break;
+                 case "temperature":
+                   //neirong
+                   ulb[0].innerHTML = reuslt[key];
+                  break;
+                //default:
+                  case "wind":
+                   //neirong
+                   ulb[1].innerHTML = reuslt[key];
+                  break;
+                 case "week":
+                  //neirong
+                  ulb[2].innerHTML = reuslt[key];
+                  break;
+                case "date_y":
+                  //neirong
+                  ulb[4].innerHTML = reuslt[key];
+                  break;
+                  case "dressing_advice":
+                  //neirong
+                  ulb[5].innerHTML = reuslt[key];
+                  break;
+                }
+
+           }
+
+       }
+    </script>
+</body>
+</html>
