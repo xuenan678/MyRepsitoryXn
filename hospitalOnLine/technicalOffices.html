@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>红兴隆中心医院</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <style>
+        *{padding: 0;margin: 0;
+                font:16px '微软雅黑';
+                color:#666;
+                text-decoration: none;
+        }
+        ul{list-style:none;}
+        body{
+            width:414px;
+            /* height:736px; */
+
+        }
+
+            .wrap{
+                width: 100%;
+                /* height: 100%; */
+
+
+            }
+            .wrap .banner{
+
+                    width: 100%;
+                    height:40px;
+                    text-align: center;
+                    line-height: 40px;
+                    color:white;
+                    background:#0D6D95;
+
+            }
+            .wrap ul{
+                     margin-top: 5px;
+                    width: 100%;
+
+
+            }
+            .wrap ul li{
+
+                    width: 100%;
+                    height:60px;
+                    line-height: 60px;
+                    border-bottom: 1px solid #DCDCDC;
+
+
+            }
+              .wrap ul li p{
+                     float: left;
+                     width: 200px;
+                     height:60px;
+                     line-height: 60px;
+                   text-align: left;
+                   margin-left: 12px;
+
+            }
+
+             .wrap ul li .rightBtn{
+                float: right;
+                margin:5px;
+                height: 48px;
+                width: 48px;
+
+          }
+           .clearfix:after{
+            　　　　　　content:"";
+            　　　　　　height:0;
+            　　　　　　line-height:0;
+            　　　　　　display:block;
+            　　　　　　visibility:hidden;
+            　　　　　　clear:both;
+
+            　　　　　}
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="banner">科 室 列 表</div>
+            <!-- 标题 -->
+        <ul id='box'>
+            <!-- 内容 -->
+          <!-- <img class="rightBtn" src="images/right.png" alt="">  -->
+        </ul>
+    </div>
+
+    <script>
+    window.onload = function(){
+
+                document.body.style.width = document.documentElement.clientWidth+'px';
+                var ulBox = document.getElementById("box");//图片合计
+                var orli = null;
+                //var liBox = document.getElementsByTagName("li");
+                //console.log(oImgs.length)
+                var NameArr = ['CT核磁共振','ICU','体检中心','儿科','内分泌科','呼吸内科','妇产科','康复科','急诊科','感染科','放射线科','体验科','泌尿外科','物理诊疗科','疼痛科','眼科','耳鼻喉科','肾内科','肿瘤内科','超声科','输血科','骨一科','骨二科','麻醉科','心内一科','心内二科','心胸外科','普外一科','普外二科','普外三科','神经内一科','神经内二科','神经内三科（卒中单元）','神经外科','冠心病重症监护(CCU)'];
+                console.log(NameArr.length)
+                    for(var i = 0;i<NameArr.length;i++){
+                       var orli = document.createElement("li");
+                       var orP = document.createElement("p");
+                       var imgs = document.createElement("img");
+                       orP.innerHTML=NameArr[i];
+                       orli.appendChild(orP);
+                       orli.appendChild(imgs);
+                       orli.className= 'clearfix';
+                       imgs.className ='rightBtn';
+                       imgs.src="images/right.png";
+                       ulBox.appendChild(orli);
+
+                    }
+                var liBox = document.getElementsByTagName("li");
+
+                    for(var i = 0;i<liBox.length;i++){
+                        liBox[i].i=i;
+                       liBox[i].addEventListener('click', clickFn)
+                       liBox[i].addEventListener('touchstart', clickFn)
+
+                    }
+                    var opener = null;
+                        function clickFn(e){
+                        var num = this.i;
+                        console.log(num);
+                        if(e.target.className=='rightBtn'){
+                      window.location.href="technicalList/"+num +".html";
+                           //console.log(opener.document.body);
+                       };
+                        }
+
+
+
+
+
+};
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
