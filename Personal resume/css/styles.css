@@ -439,9 +439,10 @@ margin: 0px;
 /*parlex*/
 .bg-parlex {
 padding-top: 0px;
-background-image: url('../images/banner-bg.jpg');
+background-image: url('../images/banner-bg.png') ;
 background-size: cover;
 background-repeat: no-repeat;
+background-position:center center;
 background-attachment: fixed;
 }
 .parlex-back {
