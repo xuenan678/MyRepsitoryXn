@@ -557,6 +557,7 @@ position: relative;
     <script type="text/javascript">
         window.onload=function(){
             var logo = document.getElementById("logo");
+            var quote = document.getElementById('quote');
             if(document.body.clientWidth<800){
                 logo.style.display = 'none';
             }
@@ -565,8 +566,11 @@ position: relative;
             
             if(document.body.clientWidth<800){
                 logo.style.display = 'none';
+                quote.style.display = 'none';
+
             }else {
                 logo.style.display = 'block';
+                quote.style.display = 'block';
             }
 
         }
