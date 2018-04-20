@@ -555,13 +555,14 @@ position: relative;
  
     <a href="#top" class="topHome"><i class="fa fa-chevron-up fa-2x"></i></a>
     <script type="text/javascript">
-        window.onload=function(){
-            var logo = document.getElementById("logo");
+        var logo = document.getElementById("logo");
             var quote = document.getElementById('quote');
             if(document.body.clientWidth<800){
                 logo.style.display = 'none';
                 quote.style.display = 'none';
             }
+        window.onload=function(){
+
              window.onresize=function(){
             //console.log(document.body.clientWidth)
             
